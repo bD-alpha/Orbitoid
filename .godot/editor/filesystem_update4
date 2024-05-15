@@ -1,0 +1,7 @@
+res://Scenes/Asteroid_Small.tscn
+res://pixelator.gdshader
+res://Scenes/Asteroid.gd
+res://Scenes/Main.tscn
+res://Scenes/Player.tscn
+res://Scenes/SpaceStation.tscn
+res://Scripts/Main.gd

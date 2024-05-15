@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://qbbi465ruoji"]
+
+[ext_resource type="Script" path="res://Scenes/Asteroid.gd" id="1_qu7ym"]
+[ext_resource type="ArrayMesh" uid="uid://doy6chkxk22ea" path="res://Models/Asteroids/asteroid1.obj" id="2_yorss"]
+[ext_resource type="ArrayMesh" uid="uid://c0qt8l6ha2067" path="res://Models/Asteroids/asteroid1_iron.obj" id="3_3ju7n"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kdqm4"]
+points = PackedVector3Array(-0.368318, -0.509012, -0.384544, 0.146532, 0.208038, 0.651477, 0.214854, 0.321826, 0.5843, 0.573224, -0.379359, 0.0162497, 0.237722, 0.390277, -0.710353, -0.646967, 0.13987, -0.300665, -0.280924, -0.444592, 0.329268, 0.193329, 0.643608, -0.051381, 0.260807, -0.586879, -0.437813, 0.623433, 0.230982, 0.334422, -0.305015, 0.295752, 0.398833, -0.349276, -0.805676, -0.208455, -0.262445, 0.573329, 0.0167304, -0.397366, 0.00375652, 0.537867, -0.171317, 0.413846, -0.643181, -0.620186, -0.379251, -0.141133, 0.43029, -0.485308, 0.104121, 0.616399, 0.1602, -0.118414, 0.342162, 0.157232, -0.672047, 0.0091581, -0.285338, 0.478974, 0.510988, 0.208962, 0.517089, -0.573872, -0.0643268, -0.455351, 0.328977, 0.527166, -0.392406, -0.100002, 0.130498, -0.637173, 0.508603, 0.38869, 0.35617, -0.16857, -0.733399, -0.0287286, -0.553291, -0.334602, 0.128858, -0.68662, -0.0419259, -0.185808, -0.0348428, -0.764069, -0.209371, -0.323023, -0.153105, 0.547709, 0.56821, -0.220627, -0.140247, 0.374167, 0.367754, -0.596796)
+
+[node name="Asteroid" type="RigidBody3D"]
+script = ExtResource("1_qu7ym")
+
+[node name="Asteroid" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_yorss")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_kdqm4")
+
+[node name="Ironum" type="MeshInstance3D" parent="."]
+visible = false
+mesh = ExtResource("3_3ju7n")
