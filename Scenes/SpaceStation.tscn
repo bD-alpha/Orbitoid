@@ -1,4 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dgem7ib2blqn2"]
+[gd_scene load_steps=15 format=3 uid="uid://dgem7ib2blqn2"]
+
+[ext_resource type="Script" path="res://Scenes/SpaceStation.gd" id="1_rppjd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xe58h"]
 resource_name = "base"
@@ -290,6 +292,7 @@ data = PackedVector3Array(0.4995, 0.4999, 0.5, 0.6825, 0.1825, 1.35, 0.4995, 0.4
 
 [node name="SpaceStation" type="StaticBody3D"]
 constant_angular_velocity = Vector3(0, 0.261799, 0)
+script = ExtResource("1_rppjd")
 
 [node name="Mesh_HD" type="MeshInstance3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, -2.18557e-07, -5, 0, 5, -2.18557e-07, 0, 0, 0)

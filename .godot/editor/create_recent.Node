@@ -1,3 +1,9 @@
+MultiMeshInstance3D
+DebugLabel
+Label3D
+BillboardReplacer
+Sprite3D
+VisibleOnScreenEnabler3D
 Node3D
 AudioStreamPlayer2D
 CanvasLayer
@@ -7,8 +13,3 @@ MeshInstance3D
 RigidBody3D
 TouchScreenButton
 Decal
-GPUParticles3D
-DirectionalLight3D
-ColorRect
-Camera3D
-CharacterBody3D

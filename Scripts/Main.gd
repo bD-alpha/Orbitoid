@@ -17,4 +17,7 @@ func _ready():
 		asteroid.rotate_y(randf())
 		asteroid.rotate_z(randf())
 		add_child(asteroid)
+		
+func _process(delta):
+	pass
 

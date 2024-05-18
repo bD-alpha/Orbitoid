@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var maneurity : float
 
 @onready var model := $Mesh
+@onready var engines := $Engines
 
 var target_direction : Vector2 = Vector2.ZERO
 var barrel := 0
@@ -28,6 +29,9 @@ func _process(delta):
 	target_direction *= 0.85
 	
 	look_at(position+forward, right.cross(forward))
+	
+	for engine in engines.get_children():
+		engine.process_material.initial_velocity_max = 5 * speed
 
 func _physics_process(delta):
 	velocity = forward * speed * top_speed

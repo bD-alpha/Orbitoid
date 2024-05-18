@@ -35,6 +35,7 @@ glow_levels/3 = 4.0
 glow_levels/4 = 2.0
 glow_levels/6 = 0.5
 glow_levels/7 = 0.25
+glow_normalized = true
 glow_blend_mode = 0
 
 [sub_resource type="Curve" id="Curve_c4eiv"]
@@ -94,8 +95,10 @@ target = NodePath("../Player")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.30505, 13.7763)
 
 [node name="Camera3D" type="Camera3D" parent="CameraFollower/Anchor"]
+current = true
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.335602, 0.682904, -0.648855, -0.313733, 0.730508, 0.606572, 0.888225, 5.0089e-07, 0.459409, 0, 3.64902, 0)
+directional_shadow_mode = 0
 
 [node name="SpaceStation" parent="." instance=ExtResource("8_60uej")]
