@@ -1,5 +1,5 @@
 @tool
-extends RigidBody3D
+extends StaticBody3D
 
 @export_enum("None:0", "Ironum:1") var ore : int :
 	set(value):

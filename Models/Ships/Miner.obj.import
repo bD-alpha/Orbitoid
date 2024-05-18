@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://ddam1esmfqv7l"
+path="res://.godot/imported/Miner.obj-445e36a4c8adb5b03c4545a8e139804d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Miner.obj-445e36a4c8adb5b03c4545a8e139804d.mesh"]
+
+source_file="res://Models/Ships/Miner.obj"
+dest_files=["res://.godot/imported/Miner.obj-445e36a4c8adb5b03c4545a8e139804d.mesh", "res://.godot/imported/Miner.obj-445e36a4c8adb5b03c4545a8e139804d.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

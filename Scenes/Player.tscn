@@ -1,10 +1,11 @@
 [gd_scene load_steps=9 format=3 uid="uid://byudpg24ttl8l"]
 
-[ext_resource type="ArrayMesh" uid="uid://telo2okuw4ff" path="res://Models/Transtellar.obj" id="1_eaf1v"]
 [ext_resource type="Script" path="res://Scripts/Player.gd" id="1_thkft"]
+[ext_resource type="ArrayMesh" uid="uid://ddam1esmfqv7l" path="res://Models/Ships/Miner.obj" id="2_t03po"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_7hv26"]
-points = PackedVector3Array(2.04762, -0.556882, 2.09438, 0.237713, 0.490308, 2.18982, -1.92002, -0.7, 1.96387, 1.38018, 0.0142857, -2.76129, 1.85641, 0.776041, -0.761159, -1.85641, 0.776041, -0.0948466, -1.85641, -0.74747, 0.38058, 1.85641, -0.74747, 0.38058, -1.07136, 0.7, -2.74286, -0.237713, -0.0808592, -3.04702, -0.142708, -0.461737, 3.04702, 1.19017, 0.490308, -3.04702, -2.04762, -0.556882, 2.09438, 1.85641, 0.776041, -0.0948466, -0.142708, 0.490308, 2.28527, -1.38018, 0.0142857, -2.76129, 1.92002, -0.7, 1.96387, -1.85641, 0.776041, -0.761159, -1.19017, 0.490308, -3.04702, 2.04762, -0.556882, 0.666312, -2.04762, -0.556882, 0.666312, 1.07136, 0.7, -2.74286, 0.142708, -0.461737, 3.04702, 0.237713, -0.0808592, -3.04702, -0.142708, -0.556882, 2.85614, 0.2, 0.655189, 1.1212, 0.142708, 0.490308, 2.28527, 0.218442, -0.160577, 2.8, -0.218442, -0.160577, 2.8, 1.85641, 0.585453, -0.761159, -1.85641, 0.585453, -0.761159, -0.2, 0.655189, 1.1212)
+[sub_resource type="ORMMaterial3D" id="ORMMaterial3D_0eloc"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
 
 [sub_resource type="Curve" id="Curve_xnjwx"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -35,16 +36,13 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [node name="Player" type="CharacterBody3D"]
 motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_thkft")
-speed = 10.0
 
-[node name="Transtellar" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, -1, 0, 0, 0)
-mesh = ExtResource("1_eaf1v")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
-shape = SubResource("ConvexPolygonShape3D_7hv26")
+[node name="Mesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0389972, 0.566175, -2.7865)
+mesh = ExtResource("2_t03po")
+surface_material_override/1 = SubResource("ORMMaterial3D_0eloc")
 
 [node name="Engines" type="Node3D" parent="."]
 
@@ -71,3 +69,6 @@ lifetime = 0.5
 local_coords = true
 process_material = SubResource("ParticleProcessMaterial_xq22p")
 draw_pass_1 = SubResource("BoxMesh_qnnjo")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+use_3d_avoidance = true

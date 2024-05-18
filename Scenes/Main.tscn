@@ -2,13 +2,16 @@
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_kk08p"]
 [ext_resource type="Shader" path="res://pixelator.gdshader" id="2_2ocuj"]
+[ext_resource type="Shader" path="res://ps1.gdshader" id="2_hm42t"]
 [ext_resource type="Texture2D" uid="uid://snfrme23hsrf" path="res://Images/blue_nebulae_1.png" id="3_hbs8q"]
 [ext_resource type="PackedScene" uid="uid://byudpg24ttl8l" path="res://Scenes/Player.tscn" id="4_hg4qo"]
 [ext_resource type="Script" path="res://Scripts/AmbientParticles.gd" id="5_qmy2x"]
-[ext_resource type="ArrayMesh" uid="uid://telo2okuw4ff" path="res://Models/Transtellar.obj" id="6_gs85g"]
 [ext_resource type="Script" path="res://Scripts/CameraFollower.gd" id="7_mifeq"]
 [ext_resource type="PackedScene" uid="uid://dgem7ib2blqn2" path="res://Scenes/SpaceStation.tscn" id="8_60uej"]
-[ext_resource type="PackedScene" uid="uid://qbbi465ruoji" path="res://Scenes/Asteroid_Small.tscn" id="9_kvq7r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xdg70"]
+render_priority = 0
+shader = ExtResource("2_hm42t")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_k27fu"]
 shader = ExtResource("2_2ocuj")
@@ -26,13 +29,13 @@ ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
 ambient_light_energy = 0.2
 glow_enabled = true
-glow_levels/1 = 5.0
-glow_levels/2 = 4.0
-glow_levels/3 = 3.0
+glow_levels/1 = 16.0
+glow_levels/2 = 8.0
+glow_levels/3 = 4.0
 glow_levels/4 = 2.0
-glow_normalized = true
+glow_levels/6 = 0.5
+glow_levels/7 = 0.25
 glow_blend_mode = 0
-glow_hdr_threshold = 0.8
 
 [sub_resource type="Curve" id="Curve_c4eiv"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.507246, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -50,12 +53,15 @@ scale_curve = SubResource("CurveTexture_cu6j5")
 [sub_resource type="BoxMesh" id="BoxMesh_n8ocw"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Root" type="Node3D"]
+[node name="Root" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_xdg70")
 script = ExtResource("1_kk08p")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+[node name="Pixelator" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Pixelator"]
 material = SubResource("ShaderMaterial_k27fu")
 anchors_preset = 15
 anchor_right = 1.0
@@ -63,13 +69,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_1ue5t")
 
 [node name="Player" parent="." instance=ExtResource("4_hg4qo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -435.276, 0, 0)
-speed = 50.0
+top_speed = 15.0
+maneurity = 0.6
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
 amount = 1024
@@ -78,22 +86,16 @@ process_material = SubResource("ParticleProcessMaterial_j2ij5")
 draw_pass_1 = SubResource("BoxMesh_n8ocw")
 script = ExtResource("5_qmy2x")
 
-[node name="Transtellar" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.8959, 22.9297, -32.8856)
-mesh = ExtResource("6_gs85g")
-
 [node name="CameraFollower" type="Node3D" parent="." node_paths=PackedStringArray("target")]
 script = ExtResource("7_mifeq")
 target = NodePath("../Player")
 
-[node name="Camera3D" type="Camera3D" parent="CameraFollower"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.65455, 12.655)
+[node name="Anchor" type="Node3D" parent="CameraFollower"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.30505, 13.7763)
+
+[node name="Camera3D" type="Camera3D" parent="CameraFollower/Anchor"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.335602, 0.682904, -0.648855, -0.313733, 0.730508, 0.606572, 0.888225, 5.29423e-08, 0.459409, 0, 3.64902, 0)
+transform = Transform3D(0.335602, 0.682904, -0.648855, -0.313733, 0.730508, 0.606572, 0.888225, 5.0089e-07, 0.459409, 0, 3.64902, 0)
 
 [node name="SpaceStation" parent="." instance=ExtResource("8_60uej")]
-
-[node name="Asteroid" parent="." instance=ExtResource("9_kvq7r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0254, 25.9269, -18.5058)
-ore = 1

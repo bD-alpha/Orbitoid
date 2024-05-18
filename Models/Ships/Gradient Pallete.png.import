@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpxga8wjfw7u4"
-path.s3tc="res://.godot/imported/Transtellar.png-f6017e1538c5516100ef6cf4b5153e74.s3tc.ctex"
+uid="uid://j3wwwuwabbkc"
+path.s3tc="res://.godot/imported/Gradient Pallete.png-92ad10b561f9c76d227fba7c7b746971.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Models/Transtellar.png"
-dest_files=["res://.godot/imported/Transtellar.png-f6017e1538c5516100ef6cf4b5153e74.s3tc.ctex"]
+source_file="res://Models/Ships/Gradient Pallete.png"
+dest_files=["res://.godot/imported/Gradient Pallete.png-92ad10b561f9c76d227fba7c7b746971.s3tc.ctex"]
 
 [params]
 
