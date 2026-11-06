@@ -1,30 +1,31 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvv2ycvprules"]
+[gd_scene format=3 uid="uid://cvv2ycvprules"]
 
-[ext_resource type="Script" path="res://Scenes/Asteroid.gd" id="1_tarmv"]
+[ext_resource type="Script" uid="uid://b2vj17qkxpyey" path="res://Scenes/Asteroid.gd" id="1_tarmv"]
 [ext_resource type="ArrayMesh" uid="uid://d2jcbp4pq87vq" path="res://Models/Asteroids/asteroid2.obj" id="2_yjeby"]
 [ext_resource type="ArrayMesh" uid="uid://cpp2x1w440nf" path="res://Models/Asteroids/asteroid2_iron.obj" id="3_fi06w"]
 [ext_resource type="Texture2D" uid="uid://dgdsudv3ydf0s" path="res://Images/Asteroids/asteroid2.png" id="4_2gkn1"]
-[ext_resource type="Script" path="res://Scripts/BillboardReplacer.gd" id="5_aodr3"]
+[ext_resource type="Script" uid="uid://durk3vnqvhn61" path="res://Scripts/BillboardReplacer.gd" id="5_aodr3"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5m5ie"]
 points = PackedVector3Array(2.01524, 0.535006, 1.87982, -0.875055, -3.21951, -0.830482, -1.34525, -3.12376, -1.01802, 0.921068, 0.927167, -2.82548, -3.03992, 0.424922, -0.340564, -1.69967, -1.13414, 2.05319, 0.42792, 2.66123, 0.389054, 2.10698, -1.3254, 0.855221, 0.335807, 0.345965, 3.16869, 0.798745, -1.59842, 2.42776, -1.33408, 1.27587, 1.87562, 1.07348, -2.05767, -1.45983, -0.967142, 1.10344, -2.23256, -2.92798, -1.32993, -0.729836, 2.11205, 0.909374, 0.296882, -0.684719, -2.35142, -1.84508, -1.13732, 2.16727, -0.435408, -0.313483, -3.07494, 0.388179, 1.8194, -0.20934, -1.46463, 0.718405, 2.69249, -0.170074, 1.45625, 2.02465, 1.1348, -2.62845, -0.579619, -1.37074, -2.7348, 1.00269, -0.913717, -0.496197, -0.300336, -2.47945, 1.45621, 0.162282, 2.81029, -2.05881, -0.4851, 1.85752, -1.04758, -2.40978, 1.21227, 2.02143, -1.51512, -0.355619, -0.0315585, 1.65844, -2.03773, 0.154047, -2.25843, -1.93855, 0.61636, 0.812184, 2.89792, -1.88446, -2.4276, -1.36755)
 
-[node name="Asteroid" type="StaticBody3D"]
+[node name="Asteroid" type="StaticBody3D" unique_id=416259941]
 script = ExtResource("1_tarmv")
 
-[node name="Asteroid" type="MeshInstance3D" parent="."]
+[node name="Asteroid" type="MeshInstance3D" parent="." unique_id=2114941895]
 mesh = ExtResource("2_yjeby")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1644748273]
 shape = SubResource("ConvexPolygonShape3D_5m5ie")
 
-[node name="Ironum" type="MeshInstance3D" parent="."]
+[node name="Ironum" type="MeshInstance3D" parent="." unique_id=205901760]
 visible = false
 mesh = ExtResource("3_fi06w")
 
-[node name="Billboard" type="Sprite3D" parent="." node_paths=PackedStringArray("mesh")]
-transform = Transform3D(-0.996628, 0.0820587, 0, -0.0820587, -0.996628, 0, 0, 0, 1, 0, 0, 0)
+[node name="Billboard" type="Sprite3D" parent="." unique_id=239244203 node_paths=PackedStringArray("mesh")]
+transform = Transform3D(0.942862, 0.3331851, 0, -0.3331851, 0.942862, 0, 0, 0, 1, 0, 0, 0)
 visible = false
+modulate = Color(0.9, 0.9, 0.9, 1)
 pixel_size = 0.12
 billboard = 1
 shaded = true
@@ -32,5 +33,5 @@ double_sided = false
 texture = ExtResource("4_2gkn1")
 script = ExtResource("5_aodr3")
 mesh = NodePath("../Asteroid")
-distance = 200.0
-transition = 20.0
+distance = 250.0
+transition = 40.0

@@ -6,7 +6,7 @@ extends Node3D
 
 var free_view := false
 
-func _process(delta):
+func _physics_process(delta):
 	if not target: return
 	
 	position = position.lerp(target.position, 0.25)

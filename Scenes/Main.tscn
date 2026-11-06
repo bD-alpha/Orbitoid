@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://c8rqd7oxj365u"]
+[gd_scene format=3 uid="uid://c8rqd7oxj365u"]
 
-[ext_resource type="Script" path="res://Scripts/Main.gd" id="1_kk08p"]
-[ext_resource type="Shader" path="res://pixelator.gdshader" id="2_2ocuj"]
-[ext_resource type="Shader" path="res://ps1.gdshader" id="2_hm42t"]
+[ext_resource type="Script" uid="uid://dvbnd5rusvndh" path="res://Scripts/Main.gd" id="1_kk08p"]
+[ext_resource type="Shader" uid="uid://nqydyn3v6j80" path="res://pixelator.gdshader" id="2_2ocuj"]
+[ext_resource type="Shader" uid="uid://263of40s7ubg" path="res://ps1.gdshader" id="2_hm42t"]
 [ext_resource type="Texture2D" uid="uid://snfrme23hsrf" path="res://Images/blue_nebulae_1.png" id="3_hbs8q"]
 [ext_resource type="PackedScene" uid="uid://byudpg24ttl8l" path="res://Scenes/Player.tscn" id="4_hg4qo"]
-[ext_resource type="Script" path="res://Scripts/AmbientParticles.gd" id="5_qmy2x"]
-[ext_resource type="Script" path="res://Scripts/CameraFollower.gd" id="7_mifeq"]
+[ext_resource type="Script" uid="uid://bs5jhlo5dglo8" path="res://Scripts/AmbientParticles.gd" id="5_qmy2x"]
+[ext_resource type="Script" uid="uid://dli7wscwnfojt" path="res://Scripts/CameraFollower.gd" id="7_mifeq"]
 [ext_resource type="PackedScene" uid="uid://dgem7ib2blqn2" path="res://Scenes/SpaceStation.tscn" id="8_60uej"]
+[ext_resource type="VoxelGIData" uid="uid://c1hy5js015it0" path="res://Scenes/Main.VoxelGI_data.res" id="9_vy5pj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xdg70"]
 render_priority = 0
@@ -35,7 +36,6 @@ glow_levels/3 = 4.0
 glow_levels/4 = 2.0
 glow_levels/6 = 0.5
 glow_levels/7 = 0.25
-glow_normalized = true
 glow_blend_mode = 0
 
 [sub_resource type="Curve" id="Curve_c4eiv"]
@@ -54,15 +54,15 @@ scale_curve = SubResource("CurveTexture_cu6j5")
 [sub_resource type="BoxMesh" id="BoxMesh_n8ocw"]
 size = Vector3(0.1, 0.1, 0.1)
 
-[node name="Root" type="MeshInstance3D"]
+[node name="Root" type="MeshInstance3D" unique_id=229320235]
 material_override = SubResource("ShaderMaterial_xdg70")
 script = ExtResource("1_kk08p")
 
-[node name="HUD" type="CanvasLayer" parent="."]
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1237002476]
 
-[node name="Pixelator" type="CanvasLayer" parent="."]
+[node name="Pixelator" type="CanvasLayer" parent="." unique_id=832010922]
 
-[node name="ColorRect" type="ColorRect" parent="Pixelator"]
+[node name="ColorRect" type="ColorRect" parent="Pixelator" unique_id=137536189]
 material = SubResource("ShaderMaterial_k27fu")
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,33 +72,38 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1929833438]
 environment = SubResource("Environment_1ue5t")
 
-[node name="Player" parent="." instance=ExtResource("4_hg4qo")]
+[node name="Player" parent="." unique_id=1295404505 instance=ExtResource("4_hg4qo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -435.276, 0, 0)
-top_speed = 15.0
-maneurity = 0.6
+top_speed = 20.0
+maneurity = 1.0
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player" unique_id=1485815713]
 amount = 1024
 lifetime = 8.0
 process_material = SubResource("ParticleProcessMaterial_j2ij5")
 draw_pass_1 = SubResource("BoxMesh_n8ocw")
 script = ExtResource("5_qmy2x")
 
-[node name="CameraFollower" type="Node3D" parent="." node_paths=PackedStringArray("target")]
+[node name="CameraFollower" type="Node3D" parent="." unique_id=1539496456 node_paths=PackedStringArray("target")]
 script = ExtResource("7_mifeq")
 target = NodePath("../Player")
 
-[node name="Anchor" type="Node3D" parent="CameraFollower"]
+[node name="Anchor" type="Node3D" parent="CameraFollower" unique_id=449122147]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.30505, 13.7763)
 
-[node name="Camera3D" type="Camera3D" parent="CameraFollower/Anchor"]
+[node name="Camera3D" type="Camera3D" parent="CameraFollower/Anchor" unique_id=1977950283]
 current = true
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1571252662]
 transform = Transform3D(0.335602, 0.682904, -0.648855, -0.313733, 0.730508, 0.606572, 0.888225, 5.0089e-07, 0.459409, 0, 3.64902, 0)
 directional_shadow_mode = 0
 
-[node name="SpaceStation" parent="." instance=ExtResource("8_60uej")]
+[node name="SpaceStation" parent="." unique_id=1889574500 instance=ExtResource("8_60uej")]
+
+[node name="VoxelGI" type="VoxelGI" parent="." unique_id=1746027965]
+subdiv = 2
+size = Vector3(219.16309, 42.97461, 208.17773)
+data = ExtResource("9_vy5pj")

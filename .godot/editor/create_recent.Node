@@ -1,3 +1,4 @@
+VoxelGI
 MultiMeshInstance3D
 DebugLabel
 Label3D
@@ -12,4 +13,3 @@ NavigationAgent3D
 MeshInstance3D
 RigidBody3D
 TouchScreenButton
-Decal
